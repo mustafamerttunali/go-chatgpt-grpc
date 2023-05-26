@@ -5,9 +5,10 @@ This repository contains a simple, yet efficient, gRPC server-client communicati
 1. Install Go from https://golang.org/dl/
 2. Install dependencies:
 ```bash
-go get ./...
+cd go-chatgpt-grpc/
+go mod tidy
 ```
-3. You can now run the program:
+3. Open two terminals and run the following commands in each:
 ```bash
 cd server/
 go run main.go
