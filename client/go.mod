@@ -1,10 +1,8 @@
-module main
+module client
 
 go 1.18
 
 require (
-	github.com/joho/godotenv v1.5.1
-	github.com/sashabaranov/go-openai v1.9.4
 	google.golang.org/grpc v1.55.0
 	google.golang.org/protobuf v1.30.0
 )

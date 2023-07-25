@@ -2,17 +2,19 @@ package main
 
 import (
 	"bufio"
+	chat "client/chat"
 	"context"
 	"fmt"
 	"log"
-	chat "main/chat"
 	"os"
+	"time"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
 
 func main() {
+	time.Sleep(time.Second * 5) // Sleep for 5 seconds
 	conn, err := grpc.Dial("localhost:50051", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalf("Failed to connect: %v", err)

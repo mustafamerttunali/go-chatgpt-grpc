@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  client:
+    build:
+      context: ./client
+    container_name: go-grpc-client
+    network_mode: host
+    stdin_open: true
+    tty: true
+  server:
+    build:
+      context: ./server
+    container_name: go-grpc-server
+    network_mode: host
+    ports:
+      - "50051:50051"
+    environment:
+      - OPENAI_KEY=your-openai-key-is-here
+
+networks:
+  go-net:
+    driver: bridge

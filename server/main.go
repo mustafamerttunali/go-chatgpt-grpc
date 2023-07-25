@@ -6,11 +6,10 @@ import (
 	"fmt"
 	"io"
 	"log"
-	chat "main/chat"
 	"net"
 	"os"
+	chat "server/chat"
 
-	"github.com/joho/godotenv"
 	openai "github.com/sashabaranov/go-openai"
 	"google.golang.org/grpc"
 )
@@ -79,12 +78,10 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to listen: %v", err)
 	}
-	loadEnv := godotenv.Load()
-	if loadEnv != nil {
-		log.Fatal("Error loading .env file")
-	}
 
-	aiClient := openai.NewClient(os.Getenv("OPENAI_KEY"))
+	OPENAI_KEY := os.Getenv("OPENAI_KEY")
+
+	aiClient := openai.NewClient(OPENAI_KEY)
 
 	s := grpc.NewServer()
 	chat.RegisterChatServiceServer(s, &server{
